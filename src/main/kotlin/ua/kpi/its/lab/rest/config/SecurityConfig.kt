@@ -1,4 +1,4 @@
-package kotlin.kotlin.ua.kpi.its.lab.rest.config
+package ua.kpi.its.lab.rest.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
