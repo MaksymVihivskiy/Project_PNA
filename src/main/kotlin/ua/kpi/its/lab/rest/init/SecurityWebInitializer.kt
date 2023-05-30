@@ -1,4 +1,4 @@
-package kotlin.kotlin.ua.kpi.its.lab.rest.init
+package ua.kpi.its.lab.rest.init
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer
 
