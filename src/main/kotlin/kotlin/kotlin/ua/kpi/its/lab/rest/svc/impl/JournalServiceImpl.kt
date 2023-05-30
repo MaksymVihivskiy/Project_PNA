@@ -9,16 +9,19 @@ import ua.kpi.its.lab.rest.svc.JournalService
 
 @Service
 class JournalServiceImpl(private val journalRepository: JournalRepository) : JournalService {
+    @PreAuthorize("hasAuthority('MODERATOR')")
     override fun createJournal(journalRequest: JournalRequest): JournalResponse {
         val journal = Journal(title = journalRequest.title, subject = journalRequest.subject)
         return JournalResponse.fromEntity(journalRepository.save(journal))
     }
 
+    @PreAuthorize("hasAuthority('CLIENT')")
     override fun getJournalById(id: Long): JournalResponse {
         val journal = journalRepository.findById(id).orElseThrow()
         return JournalResponse.fromEntity(journal)
     }
 
+    @PreAuthorize("hasAuthority('MODERATOR')")
     override fun updateJournalById(id: Long, journalRequest: JournalRequest): JournalResponse {
         val journal = journalRepository.findById(id).orElseThrow()
         journal.title = journalRequest.title
@@ -27,6 +30,7 @@ class JournalServiceImpl(private val journalRepository: JournalRepository) : Jou
         return JournalResponse.fromEntity(resultJournal)
     }
 
+    @PreAuthorize("hasAuthority('MODERATOR')")
     override fun deleteJournalById(id: Long): Boolean {
         journalRepository.deleteById(id)
         return true
