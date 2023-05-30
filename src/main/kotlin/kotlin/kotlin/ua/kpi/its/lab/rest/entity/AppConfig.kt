@@ -1,12 +1,10 @@
-package com.example.models
-
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-open class AppConfig {
+class AppConfig {
     @Bean
-    open fun journalContainer(): JournalContainer {
+    fun container(): JournalContainer {
         return JournalContainer()
     }
 }

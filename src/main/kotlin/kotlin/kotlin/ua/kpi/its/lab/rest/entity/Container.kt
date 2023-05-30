@@ -1,9 +1,9 @@
-package com.example.models
+import ua.kpi.its.lab.rest.entity.Journal
 
 interface Container<T> {
-    fun add(journal: T)
+    fun add(car: T)
     fun remove(index: Int)
-    fun update(index: Int, journal: T)
+    fun update(index: Int, car: T)
     fun get(index: Int): T
     fun getAll(): List<T>
 }
