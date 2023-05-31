@@ -19,10 +19,15 @@ data class Journal(
     val issn: String,
     val recommendedPrice: Int,
     val periodical: Boolean,
-    @OneToMany(mappedBy = "car", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val articles: List<Article>,
+    @OneToMany(mappedBy = "journal", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var articles: MutableList<Article> = mutableListOf()
 ) : Comparable<Journal> {
     override fun compareTo(journal: Journal): Int {
         return title.compareTo(journal.title)
+    }
+
+    fun addArticle(article: Article) {
+        articles.add(article)
+        article.journal = this
     }
 }
