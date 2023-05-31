@@ -19,7 +19,7 @@ data class Journal(
     val issn: String,
     val recommendedPrice: Int,
     val periodical: Boolean,
-    @OneToMany(mappedBy = "car", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "journal", cascade = [CascadeType.ALL], orphanRemoval = true)
     val articles: List<Article>,
 ) : Comparable<Journal> {
     override fun compareTo(journal: Journal): Int {
